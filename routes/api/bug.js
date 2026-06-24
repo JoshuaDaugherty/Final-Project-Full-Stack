@@ -25,7 +25,7 @@ const router = express.Router();
 
 //isLoggedIn(),hasPermission('canViewData'),
 
-router.get('/listBugs', hasPermission('canViewData'), async (req, res) => {
+router.get('/listBugs', async (req, res) => {
   let match = {}; // match stage of the aggregation pipeline is the filter
 
   let {keywords, classification, maxAge, minAge, closed, sortBy, pageSize, pageNumber} = req.query
@@ -152,7 +152,7 @@ router.get('/:bugId', hasPermission('canViewData'), async (req, res) => {
 });
 
 //,isLoggedIn, hasPermission('canCreateBug')
-router.post('/new', hasPermission('canCreateBug'), async (req, res) => {
+router.post('/new', async (req, res) => {
   try {
     // Check if the user is logged in
     if (!req.auth) {
