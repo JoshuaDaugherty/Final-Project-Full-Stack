@@ -1,3 +1,5 @@
+
+
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -9,8 +11,7 @@ const debugServer = debug('app:Server');
 import {userRouter} from './routes/api/user.js';
 import {bugRouter} from './routes/api/bug.js';
 import {connect} from './database.js';
-import { commentRouter } from './routes/api/comment.js';
-import { testCasesRouter } from './routes/api/testCases.js';
+
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -37,9 +38,7 @@ app.use('/api/user', userRouter);
 
 app.use('/api/bug', bugRouter);
 
-app.use('/api/comment', commentRouter);
-
-app.use('/api/testCases', testCasesRouter);
+connect();
 
 
 
