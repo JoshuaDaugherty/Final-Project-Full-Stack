@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
@@ -15,7 +16,7 @@ export default function LoginForm({ showSuccess, showError, setAuth }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //const [message, setMessage] = useState("");
-  const [showPasswords, setShowPasswords] = useState(false);
+  // const [showPasswords, setShowPasswords] = useState(false);
 
   const navigate = useNavigate();
 
@@ -48,7 +49,7 @@ export default function LoginForm({ showSuccess, showError, setAuth }) {
     e.preventDefault();
    
     try{
-      let response = await axios.post(`http://localhost:5000/api/user/login`, { email, password }, { withCredentials: true });
+      let response = await axios.post(`${import.meta.env.VITE_API_URL}/api/user/login`, { email, password }, { withCredentials: true });
       console.log(import.meta.env.VITE_API_URL);
       if(response.status === 200){
         if(response.data.message == 'Invalid email or password'){

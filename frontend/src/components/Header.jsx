@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { NavLink } from "react-router-dom";
 import { IoPerson } from "react-icons/io5";
 import { IoPersonAddOutline } from "react-icons/io5";
@@ -38,6 +39,7 @@ const Navbar = ({ auth, onLogout }) => {
             <>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/me" id="userDropdown" role="button">
+                  
                   <IoPerson className="mb-1"/> Welcome {auth.email} - {auth.role.join(', ')}
                 </NavLink>
               </li>

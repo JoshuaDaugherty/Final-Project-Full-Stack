@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import BugListItem from './BugListItem.jsx';
@@ -11,18 +12,18 @@ import './BugList.css';
 
 
 
-const BugList = ({showSuccess,auth}) =>{ 
-  const [selectedBug, setSelectedBug] = useState(null);
+const BugList = ({auth}) =>{ 
+//   const [selectedBug, setSelectedBug] = useState(null);
   const [bugs, setBug] = useState([]);
-  const [deleteCounter, setDeleteCounter] = useState(0);
+  const [deleteCounter] = useState(0);
   const [keywords, setKeywords] = useState('');
   const [classification, setClassification] = useState('');
   const [minAge, setMinAge] = useState('');
   const [maxAge, setMaxAge] = useState('');
   const [closed, setClosed] = useState('');
   const [sortBy, setSortBy] = useState('');
-  const [pageSize, setPageSize] = useState(10);
-  const [pageNumber, setPageNumber] = useState(1);
+  const [pageSize] = useState(10);
+  const [pageNumber] = useState(1);
 
   useEffect(() => {
    
@@ -40,7 +41,7 @@ const BugList = ({showSuccess,auth}) =>{
     fetchBug();
   }, [deleteCounter]);
 
-  function handleConfirmDelete(evt, bugId){
+  function handleConfirmDelete(evt, bugId, ){
     evt.preventDefault();
     try{
      const data = axios.patch(`${import.meta.env.VITE_API_URL}/api/bug/${bugId}/close`, { withCredentials: true });
@@ -49,6 +50,7 @@ const BugList = ({showSuccess,auth}) =>{
       console.log(error);
     }
   }
+  
 
   const onSubmitSearch = async (evt) => {
     evt.preventDefault();

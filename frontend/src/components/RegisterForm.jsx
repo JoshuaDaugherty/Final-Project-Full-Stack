@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {useState } from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +20,7 @@ export default function RegisterForm ({showSuccess, showError, setAuth}){
     evt.preventDefault();
 
     try{
-      const response = await axios.post('http://localhost:5000/api/user/register',{email,password,givenName,familyName,role,fullName}, {withCredentials: true});
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/user/register`,{email,password,givenName,familyName,role,fullName}, {withCredentials: true});
       showSuccess('User registered successfully');
       navigate('/list'); // Redirect to home page
       localStorage.setItem('auth', JSON.stringify(response.data)); //Save auth to local storage

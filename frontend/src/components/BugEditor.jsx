@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 
-export default function BugEditor({showError, auth}) {
+
+export default function BugEditor({showError}) {
 
 
   const [bug, setBug] = useState({title: '', description: '', stepsToReproduce: '', assignedTo:'', classification:'', closed:''}); 
@@ -63,7 +65,7 @@ export default function BugEditor({showError, auth}) {
           }
         }
       }else{
-        const axiosResult = await axios.post('http://localhost:5000/api/bug/new', bug,{withCredentials:true});
+        const axiosResult = await axios.post(`${import.meta.env.VITE_API_URL}/api/bug/new`, bug,{withCredentials:true});
         if(axiosResult.data.message){
           navigate('/listBugs');
         }
@@ -71,6 +73,7 @@ export default function BugEditor({showError, auth}) {
     }catch(error){
       console.log(`Error: ${error}`);
     }
+
   };
 
   

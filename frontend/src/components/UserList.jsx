@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import UserListItem from './UserListItem.jsx';
@@ -8,15 +9,15 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 
 
 
-const UserList = ({showSuccess, auth}) =>{ 
-  const [selectedUser, setSelectedUser] = useState(null);
+const UserList = ({ auth}) =>{ 
+  // const [selectedUser, setSelectedUser] = useState(null);
   const [users, setUser] = useState([]);
   const [deleteCounter, setDeleteCounter] = useState(0);
   const [keywords, setKeywords] = useState('');
   const [role, setRole] = useState('');
   const [sortBy, setSortBy] = useState('givenName');
-  const [pageSize, setPageSize] = useState('');
-  const [pageNumber, setPageNumber] = useState('');
+  const [pageSize] = useState('');
+  const [pageNumber] = useState('');
   const [maxAge, setMaxAge] = useState('');
   const [minAge, setMinAge] = useState('');
 

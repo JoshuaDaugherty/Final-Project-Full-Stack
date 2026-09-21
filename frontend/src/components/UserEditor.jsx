@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
@@ -60,7 +61,7 @@ export default function UserEditor ({showError, auth}){
           }
         }
       }else{
-        const axiosResult = await axios.post('http://localhost:5000/api/user/register', user,{withCredentials:true});
+        const axiosResult = await axios.post(`${import.meta.env.VITE_API_URL}/api/user/register`, user,{withCredentials:true});
         if(axiosResult.data.message){
           navigate('/list');
         }
