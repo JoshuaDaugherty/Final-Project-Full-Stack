@@ -121,24 +121,7 @@ async function addBug(bug){
   }
     
 
-  async function addCommentToBug(bugId, commentText) {
-    try {
-      // Assuming you are using Mongoose and Bug is your model
-      const result = await Bug.findByIdAndUpdate(
-        bugId,
-        { $push: { comments: commentText } }, // Push the comment string into the comments array
-        { new: true } // Return the updated document
-      );
-  
-      if (!result) {
-        throw new Error('Bug not found');
-      }
-    } catch (error) {
-      console.error('Error adding comment:', error);
-      throw error; // Rethrow the error to be handled in the route
-    }
-  }
-
+ 
   
   async function saveBug(comment){
     const db = await connect();
@@ -251,7 +234,6 @@ export {
   classifyBug,
   assignBug,
   closeBug,
-  addCommentToBug,
   getCommentById,
   getAllComments,
   getAllCommentsByBug,
