@@ -32,7 +32,7 @@ export default function RegisterForm({ showSuccess, showError, setAuth }) {
       // FIXED: Wrapped single select string into an array context [role] to prevent auth runtime mapping faults
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/user/register`,
-        { email, password, givenName, familyName, role: [role], fullName }, 
+        { email, password, givenName, familyName, role, fullName }, 
         { withCredentials: true }
       );
       
